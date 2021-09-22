@@ -7,7 +7,7 @@ export const isPastTime = (date, time) => {
   myTime = myTime.split(":");
   const newTime =
     (myTime[0] * 3600 + myTime[1] * 60) * 1000 + newDate.getTime();
-  if (Date.now > newTime) {
+  if (Date.now() > newTime) {
     isPast = true;
   }
   return isPast;
