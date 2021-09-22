@@ -1,4 +1,9 @@
-import { ADD_REMINDER, CLEAR_REMINDER, DELETE_REMINDER } from "./constants";
+import {
+  ADD_REMINDER,
+  CLEAR_REMINDER,
+  DELETE_REMINDER,
+  UPDATE_REMINDER,
+} from "./constants";
 
 export const addReminder = (content) => ({
   type: ADD_REMINDER,
@@ -12,4 +17,12 @@ export const clearReminder = () => ({
 export const deleteReminder = (index) => ({
   type: DELETE_REMINDER,
   payload: index,
+});
+
+export const updateReminder = (index, content) => ({
+  type: UPDATE_REMINDER,
+  payload: {
+    index: index,
+    contnet: content,
+  },
 });
