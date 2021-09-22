@@ -1,35 +1,41 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteReminder } from "../../Redux/Actions";
+import ReminderList from "../../Components/ReminderList";
+import { deleteReminder, clearReminder } from "../../Redux/Actions";
+import PastReminderList from "../../Components/PastReminderList";
+import UpcomingReminderList from "../../Components/UpcomingReminderList";
+import { isPastTime } from "./utils";
 
-const DisplayReminders = ({ reminders, deleteReminder }) => {
-  const deleteReminderRow = (index) => {
-    deleteReminder(index);
+const DisplayReminders = ({ reminders, deleteReminder, clearReminder }) => {
+  const clear = () => {
+    clearReminder();
   };
+
   return (
     <>
       <div className="col-sm-6 child">
         {reminders.Reminders.map((reminder, index) => {
-          return (
-            <div
-              key={index}
-              className="bg-secondary bg-gradient text-light rounded p-1 m-1 position-relative"
-            >
-              <h3 className="text-center">{reminder.task}</h3>
-              <div className="d-flex justify-content-evenly text-center">
-                <p>{reminder.date}</p>
-                <p>{reminder.time}</p>
-              </div>
-              <button
-                type="button"
-                className="btn-close position-absolute top-0 right-0 btn-danger"
-                aria-label="Close"
-                onClick={() => {
-                  deleteReminderRow(index);
-                }}
-              ></button>
-            </div>
-          );
+          return <ReminderList key={index} index={index} reminder={reminder} />;
+        })}
+        <button type="button" className="btn btn-danger" onClick={clear}>
+          Clear Reminders
+        </button>
+      </div>
+      <div className="row m-4">
+        {reminders.Reminders.map((reminder, index) => {
+          if (isPastTime(reminder.date, reminder.time)) {
+            return (
+              <PastReminderList key={index} index={index} reminder={reminder} />
+            );
+          } else {
+            return (
+              <UpcomingReminderList
+                key={index}
+                index={index}
+                reminder={reminder}
+              />
+            );
+          }
         })}
       </div>
     </>
@@ -40,4 +46,6 @@ const mapStateToProps = (state) => ({
   reminders: state,
 });
 
-export default connect(mapStateToProps, { deleteReminder })(DisplayReminders);
+export default connect(mapStateToProps, { deleteReminder, clearReminder })(
+  DisplayReminders
+);
