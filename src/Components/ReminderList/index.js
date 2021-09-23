@@ -2,7 +2,7 @@ import React from "react";
 import { deleteReminder } from "../../Redux/Actions";
 import { connect } from "react-redux";
 
-const ReminderList = ({ reminder, index }) => {
+const ReminderList = ({ reminder, index, deleteReminder }) => {
   const deleteReminderRow = (index) => {
     deleteReminder(index);
   };
