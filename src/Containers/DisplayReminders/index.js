@@ -25,34 +25,21 @@ const DisplayReminders = ({ reminders, deleteReminder, clearReminder }) => {
         <div className="col-sm-6">
           <h2>Past Reminders</h2>
           {reminders.Reminders.map((reminder, index) => {
-            if (isPastTime(reminder.date, reminder.time)) {
-              return (
-                <PastReminderList
-                  key={index}
-                  index={index}
-                  reminder={reminder}
-                />
-              );
-            } else {
-              return false;
-            }
+            return isPastTime(reminder.date, reminder.time) ? (
+              <PastReminderList key={index} index={index} reminder={reminder} />
+            ) : null;
           })}
         </div>
         <div className="col-sm-6">
           <h2>Upcoming Reminders</h2>
           {reminders.Reminders.map((reminder, index) => {
-            console.log(isPastTime(reminder.date, reminder.time));
-            if (isPastTime(reminder.date, reminder.time)) {
-              return false;
-            } else {
-              return (
-                <UpcomingReminderList
-                  key={index}
-                  index={index}
-                  reminder={reminder}
-                />
-              );
-            }
+            return !isPastTime(reminder.date, reminder.time) ? (
+              <UpcomingReminderList
+                key={index}
+                index={index}
+                reminder={reminder}
+              />
+            ) : null;
           })}
         </div>
       </div>
