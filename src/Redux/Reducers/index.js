@@ -1,3 +1,5 @@
 import { combineReducers } from "redux";
 import Reminders from "./reminders";
-export default combineReducers({ Reminders });
+import FieldFlag from "./fieldFalg";
+
+export default combineReducers({ Reminders, FieldFlag });

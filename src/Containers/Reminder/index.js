@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../../Components/Input";
 import { inputData } from "./contants";
 import { connect } from "react-redux";
-import {
-  addReminder,
-  deleteReminder,
-  clearReminder,
-} from "../../Redux/Actions";
+import { addReminder, updateReminder, setFlag } from "../../Redux/Actions";
 
-const Reminder = (props) => {
+const Reminder = ({ addReminder, updateReminder, reminders, setFlag }) => {
   const [fields, setFields] = useState({});
   const [errors, setErrors] = useState({});
   const [reminder, setReminders] = useState([]);
+  const { flag, index } = reminders.FieldFlag;
+
+  useEffect(() => {
+    if (flag) {
+      document.getElementById("btn").textContent = "Edit";
+      setFields(reminders.Reminders[index]);
+      setFlag(index);
+    }
+  });
 
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
@@ -35,11 +40,17 @@ const Reminder = (props) => {
     setErrors(errorObj);
     return formIsValid;
   };
+
   const formSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {
       setReminders([...reminder, fields]);
-      props.addReminder(fields);
+      if (document.getElementById("btn").textContent === "Edit") {
+        updateReminder(index, fields);
+        document.getElementById("btn").textContent = "Submit";
+      } else {
+        addReminder(fields);
+      }
       setFields({
         task: "",
         date: "",
@@ -60,7 +71,12 @@ const Reminder = (props) => {
             onChange={handleChange}
           />
         ))}
-        <button type="submit" className="btn btn-primary" onClick={formSubmit}>
+        <button
+          type="submit"
+          id="btn"
+          className="btn btn-primary"
+          onClick={formSubmit}
+        >
           Submit
         </button>
       </form>
@@ -74,6 +90,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   addReminder,
-  deleteReminder,
-  clearReminder,
+  updateReminder,
+  setFlag,
 })(Reminder);

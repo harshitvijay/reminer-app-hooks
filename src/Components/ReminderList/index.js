@@ -1,10 +1,14 @@
 import React from "react";
-import { deleteReminder } from "../../Redux/Actions";
+import { deleteReminder, setFlag } from "../../Redux/Actions";
 import { connect } from "react-redux";
 
-const ReminderList = ({ reminder, index, deleteReminder }) => {
+const ReminderList = ({ reminder, index, deleteReminder, setFlag }) => {
   const deleteReminderRow = (index) => {
     deleteReminder(index);
+  };
+
+  const setFieldFlag = (index) => {
+    setFlag(index);
   };
   return (
     <div className="bg-secondary bg-gradient text-light rounded p-1 m-1 position-relative">
@@ -21,6 +25,13 @@ const ReminderList = ({ reminder, index, deleteReminder }) => {
           deleteReminderRow(index);
         }}
       ></button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setFieldFlag(index)}
+      >
+        Update Reminder
+      </button>
     </div>
   );
 };
@@ -29,4 +40,6 @@ const mapStateToProps = (state) => ({
   reminders: state,
 });
 
-export default connect(mapStateToProps, { deleteReminder })(ReminderList);
+export default connect(mapStateToProps, { deleteReminder, setFlag })(
+  ReminderList
+);
