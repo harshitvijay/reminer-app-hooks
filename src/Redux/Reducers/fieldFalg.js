@@ -1,4 +1,4 @@
-import { SET_FLAG } from "../Actions/constants";
+import { SET_UPDATE_FLAG } from "../Actions/constants";
 
 const initialState = {
   flag: false,
@@ -7,7 +7,7 @@ const initialState = {
 
 const FieldFlag = (state = initialState, action) => {
   switch (action.type) {
-    case SET_FLAG: {
+    case SET_UPDATE_FLAG: {
       return {
         flag: !state.flag,
         index: action.payload,

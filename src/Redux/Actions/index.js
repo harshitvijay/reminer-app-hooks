@@ -3,7 +3,7 @@ import {
   CLEAR_REMINDER,
   DELETE_REMINDER,
   UPDATE_REMINDER,
-  SET_FLAG,
+  SET_UPDATE_FLAG,
 } from "./constants";
 
 export const addReminder = (content) => ({
@@ -28,7 +28,7 @@ export const updateReminder = (index, content) => ({
   },
 });
 
-export const setFlag = (index) => ({
-  type: SET_FLAG,
+export const setUpdateFlag = (index) => ({
+  type: SET_UPDATE_FLAG,
   payload: index,
 });
