@@ -11,15 +11,15 @@ const ReminderList = ({ reminder, index, deleteReminder, setUpdateFlag }) => {
     setUpdateFlag(index);
   };
   return (
-    <div className="bg-secondary bg-gradient text-light rounded p-1 m-1 position-relative">
-      <h3 className="text-center">{reminder.task}</h3>
-      <div className="d-flex justify-content-evenly text-center">
+    <div className="reminder-div">
+      <h3>{reminder.task}</h3>
+      <div className="dateTime">
         <p>{reminder.date}</p>
         <p>{reminder.time}</p>
       </div>
       <button
         type="button"
-        className="btn-close position-absolute top-0 right-0 btn-danger"
+        className="btn-close"
         aria-label="Close"
         onClick={() => {
           deleteReminderRow(index);
@@ -27,7 +27,7 @@ const ReminderList = ({ reminder, index, deleteReminder, setUpdateFlag }) => {
       ></button>
       <button
         type="button"
-        className="btn btn-primary"
+        className="button"
         onClick={() => setFieldFlag(index)}
       >
         Update Reminder

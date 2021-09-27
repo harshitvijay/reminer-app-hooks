@@ -2,9 +2,9 @@ import React from "react";
 
 const Input = ({ data, value, error, onChange }) => {
   return (
-    <div className="mb-5">
+    <div className="input-div">
       <label className="form-label">
-        {data.label} <span className="text-danger">*</span>
+        {data.label} <span className="error">*</span>
       </label>
       <input
         type={data.type}
@@ -13,7 +13,7 @@ const Input = ({ data, value, error, onChange }) => {
         value={value}
         onChange={onChange}
       />
-      <span className="text-danger">{error}</span>
+      <span className="error">{error}</span>
     </div>
   );
 };

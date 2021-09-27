@@ -15,7 +15,7 @@ const DisplayReminders = ({ reminders, clearReminder }) => {
         {reminders.Reminders.map((reminder, index) => {
           return <ReminderList key={index} index={index} reminder={reminder} />;
         })}
-        <button type="button" className="btn btn-danger" onClick={clear}>
+        <button type="button" className="button clear" onClick={clear}>
           Clear Reminders
         </button>
       </div>

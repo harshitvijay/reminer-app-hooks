@@ -80,12 +80,7 @@ const Reminder = ({
             onChange={handleChange}
           />
         ))}
-        <button
-          type="submit"
-          id="btn"
-          className="btn btn-primary"
-          onClick={formSubmit}
-        >
+        <button type="submit" id="btn" className="button" onClick={formSubmit}>
           Submit
         </button>
       </form>

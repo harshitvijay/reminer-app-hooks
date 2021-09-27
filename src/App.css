@@ -1,3 +1,49 @@
 .child {
   margin-top: 5%;
 }
+
+.error {
+  color: red;
+}
+
+.input-div {
+  margin-bottom: 3rem;
+}
+.reminder-div {
+  background-image: linear-gradient(grey, rgb(187, 187, 218));
+  color: rgb(237, 195, 195);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  position: relative;
+}
+.reminder-div h3 {
+  text-align: center;
+}
+.reminder-div .dateTime {
+  /* d-flex justify-content-evenly text-center */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.reminder-div .btn-close {
+  /* position-absolute top-0 right-0 btn-danger */
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.button {
+  background-color: rgb(178, 191, 192);
+  color: black;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+}
+.button:hover {
+  background-color: blue;
+  color: rgb(213, 202, 202);
+}
+.clear:hover {
+  background-color: red;
+}
