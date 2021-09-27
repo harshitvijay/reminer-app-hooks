@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../Components/Input";
-import { inputData } from "./contants";
+import { inputData } from "../../constants";
 import { connect } from "react-redux";
-import { addReminder, updateReminder, setFlag } from "../../Redux/Actions";
+import {
+  addReminder,
+  updateReminder,
+  setUpdateFlag,
+} from "../../Redux/Actions";
 
-const Reminder = ({ addReminder, updateReminder, reminders, setFlag }) => {
+const Reminder = ({
+  addReminder,
+  updateReminder,
+  reminders,
+  setUpdateFlag,
+}) => {
   const [fields, setFields] = useState({});
   const [errors, setErrors] = useState({});
   const [reminder, setReminders] = useState([]);
@@ -14,7 +23,7 @@ const Reminder = ({ addReminder, updateReminder, reminders, setFlag }) => {
     if (flag) {
       document.getElementById("btn").textContent = "Edit";
       setFields(reminders.Reminders[index]);
-      setFlag(index);
+      setUpdateFlag(index);
     }
   });
 
@@ -91,5 +100,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   addReminder,
   updateReminder,
-  setFlag,
+  setUpdateFlag,
 })(Reminder);
