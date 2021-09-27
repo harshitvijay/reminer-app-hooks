@@ -47,3 +47,6 @@
 .clear:hover {
   background-color: red;
 }
+.wrapper {
+  margin: auto;
+}
