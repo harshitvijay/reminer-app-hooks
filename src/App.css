@@ -1,5 +1,7 @@
 .child {
-  margin-top: 5%;
+  margin-top: 10%;
+  max-width: 50%;
+  margin: auto;
 }
 
 .error {
@@ -42,9 +44,26 @@
   background-color: blue;
   color: rgb(213, 202, 202);
 }
+.clear {
+  margin: 5% 0 5% 45%;
+}
 .clear:hover {
   background-color: red;
 }
 .wrapper {
-  margin: auto;
+  margin-top: 5%;
+}
+#form-heading {
+  text-align: center;
+}
+.reminders {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}
+.reminder-col {
+  min-width: 40%;
+}
+.remin-heading {
+  text-align: center;
 }

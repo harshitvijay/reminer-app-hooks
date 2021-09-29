@@ -3,12 +3,12 @@ import React from "react";
 const Input = ({ data, value, error, onChange }) => {
   return (
     <div className="input-div">
-      <label className="form-label">
+      <label>
         {data.label} <span className="error">*</span>
       </label>
       <input
         type={data.type}
-        className="form-control"
+        className="form-control "
         name={data.name}
         value={value}
         onChange={onChange}
@@ -17,5 +17,4 @@ const Input = ({ data, value, error, onChange }) => {
     </div>
   );
 };
-
 export default Input;

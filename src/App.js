@@ -4,7 +4,7 @@ import DisplayReminders from "./Containers/DisplayReminders";
 
 function App() {
   return (
-    <div className="container row wrapper">
+    <div className="wrapper">
       <Reminder />
       <DisplayReminders />
     </div>
