@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "../../Components/Input";
 import { inputData } from "../../constants";
 import { connect } from "react-redux";
+import { handleValidation } from "./validation";
 import {
   addReminder,
   updateReminder,
@@ -30,29 +31,10 @@ const Reminder = ({
   const handleChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
-  const handleValidation = () => {
-    const errorObj = {};
-    let formIsValid = true;
-
-    if (!fields.task) {
-      formIsValid = false;
-      errorObj.task = "Cannot be empty";
-    }
-    if (!fields.date) {
-      formIsValid = false;
-      errorObj.daye = "Cannot be Empty!";
-    }
-    if (!fields.time) {
-      formIsValid = false;
-      errorObj.time = "Cannot be Empty!";
-    }
-    setErrors(errorObj);
-    return formIsValid;
-  };
 
   const formSubmit = (e) => {
     e.preventDefault();
-    if (handleValidation()) {
+    if (handleValidation(fields, setErrors)) {
       setReminders([...reminder, fields]);
       if (document.getElementById("btn").textContent === "Edit") {
         updateReminder(index, fields);
@@ -69,7 +51,8 @@ const Reminder = ({
   };
 
   return (
-    <div className="col-sm-6 child">
+    <div className="child">
+      <h2 id="form-heading">Add Reminders</h2>
       <form>
         {inputData.map((data, index) => (
           <Input
